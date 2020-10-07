@@ -61,7 +61,7 @@ class ShardedStoreTest extends StoreTest {
     s.shards.asScala.values.toSet.size shouldBe 10
 
     //insert random data
-    val data: Seq[(K, V)] = (1 until 10000).map(i => (TestUtils.randomA(8), TestUtils.randomA(3))).toBuffer
+    val data: Seq[(K, V)] = (1 until 10000).map(i => (TestUtils.randomA(8), TestUtils.randomA(3)))
     val sorted = data.sortBy(_._1)
     s.update(TestUtils.fromLong(1), toUpdate = data, toRemove = Nil)
     s.getAll().toBuffer.size shouldBe sorted.size
